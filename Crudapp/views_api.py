@@ -18,3 +18,4 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Product.objects.filter(user_name=self.request.user.username)
+#hi
