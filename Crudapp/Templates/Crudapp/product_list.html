@@ -1,0 +1,20 @@
+{% extends 'Crudapp/base.html' %}
+
+{% block content %}
+<h2>Product List</h2>
+<a href="{% url 'product_create' %}">Add New Product</a>
+<ul>
+    {% for product in products %}
+        <li>
+            {{ product.name }} - ₹{{ product.price }}
+            <a href="{% url 'product_update' product.pk %}">Edit</a>
+            <a href="{% url 'product_delete' product.pk %}">Delete</a>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="Product Image" width="200">
+            {% else %}
+                <p>No image</p>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
